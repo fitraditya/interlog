@@ -38,6 +38,13 @@ func New() *Interlog {
 	}
 }
 
+// SetEnv() set environment flag
+func (interlog *Interlog) SetEnv(env string) {
+	if env != "" {
+		interlog.Env = env
+	}
+}
+
 // Unary() returns a server interceptor method to logging unary gRPC call
 func (interlog *Interlog) Unary() grpc.UnaryServerInterceptor {
 	return func(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (resp interface{}, err error) {
